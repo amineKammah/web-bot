@@ -12,7 +12,7 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install python3.8 -y
 sudo apt install python3-pip -y
-pip3 install selenium
+pip3 install selenium randominfo
 sudo apt-get -y install pptp-linux
 
 rm chromedriver_linux64.zip google-chrome-stable_current_amd64.deb
