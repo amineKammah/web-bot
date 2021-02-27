@@ -16,7 +16,7 @@ captcha_to_text = {
             }
 
 
-location_cookie = {'name': 'aep_usuc_f', 'value': 'site=glo&c_tp=USD&x_alimid=1&isb=y&region=US&b_locale=en_US', 'path': '/', 'domain': '.aliexpress.com', 'secure': False, 'httpOnly': False, 'expiry': 1929187642, 'sameSite': 'None'}
+
 
 
 def get_boost_link():
@@ -50,4 +50,3 @@ def get_driver(proxy = None):
 
 def set_location_cookie(driver):
     driver.delete_all_cookies()
-    driver.add_cookie(location_cookie)
