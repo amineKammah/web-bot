@@ -1,4 +1,3 @@
-
 from utils import *
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -16,7 +15,7 @@ captcha_to_text = {
     "9oADAMBAAIRAxEAPwD3LV9RTSNFvtTkQulpbyTsgOCwVS2PxxW2GouvWhRWnM0vvdhN2VzxWf4+atMkk9j4ahW3jI3vJK8gXPTJAAFfbQ4QoRajUrO78kv1ZzfWH0R6d4A8Xt418NDVHs": "BWSJ",
     "9oADAMBAAIRAxEAPwD3+gAoAKAMHxp4hfwr4Sv9ZjhSaS3VdkbvtBLMFH884747V35Zg1jcXDDt2T": "MRRP",
     "9oADAMBAAIRAxEAPwD3+gAoAKAILq9tbGMSXdzDbxk4DSyBBn6mrp0p1HaEW35aibS3Ftru2vYvNtbiKeP+": "DBPR",
-            }
+}
 
 
 def buddy_bonus(username, password):
@@ -30,9 +29,8 @@ def buddy_bonus(username, password):
     driver.get(get_boost_link())
     set_location_cookie(driver)
 
-
-    print('Clicking on 10$ button')
-    bonus_button_xpath = '//*[starts-with(@id, am-modal-container)]/div/div[2]/div/div/div/div/div[1]/div/div/div[4]/div[2]'
+    print("Clicking on 10$ button")
+    bonus_button_xpath = "//*[starts-with(@id, am-modal-container)]/div/div[2]/div/div/div/div/div[1]/div/div/div[4]/div[2]"
     bonus_button = driver.find_element_by_xpath(bonus_button_xpath)
     bonus_button.click()
     time.sleep(5)
@@ -45,13 +43,13 @@ def buddy_bonus(username, password):
     password_xpath = '//*[@id="fm-login-password"]'
     driver.find_element_by_xpath(password_xpath).send_keys(password)
 
-    print('clicking on log in button')
+    print("clicking on log in button")
     login_button_xpath = '//*[@id="root"]/div[2]/div/div/button'
     driver.find_element_by_xpath(login_button_xpath).click()
 
     time.sleep(7)
 
-    print('dealing with slider')
+    print("dealing with slider")
     slider_xtext = '//*[@id="nc_1_n1z"]'
     slider = driver.find_element_by_xpath(slider_xtext)
 
@@ -67,9 +65,9 @@ def buddy_bonus(username, password):
 
     captcha_xpath = '//*[@id="nc_1__imgCaptcha_img"]/img'
     captcha_img = driver.find_element_by_xpath(captcha_xpath)
-    print('deqling with captcha')
+    print("deqling with captcha")
     if captcha_img:
-        captcha_src = captcha_img.get_attribute('src').split("/")[11]
+        captcha_src = captcha_img.get_attribute("src").split("/")[11]
 
         if captcha_src not in captcha_to_text:
             print(captcha_src)
@@ -78,16 +76,18 @@ def buddy_bonus(username, password):
         captcha_text = captcha_to_text[captcha_src]
 
         captcha_input_xpath = '//*[@id="nc_1_captcha_input"]'
-        driver.find_element_by_xpath(captcha_input_xpath).send_keys(captcha_text + Keys.RETURN)
+        driver.find_element_by_xpath(captcha_input_xpath).send_keys(
+            captcha_text + Keys.RETURN
+        )
 
     time.sleep(3)
 
-    print('clicking on log in button')
+    print("clicking on log in button")
     driver.find_element_by_xpath(login_button_xpath).click()
 
     time.sleep(7)
 
-    print('claiming bonus\n\n')
+    print("claiming bonus\n\n")
 
     bonus_button = driver.find_elements_by_xpath(bonus_button_xpath)
     if bonus_button:
@@ -96,4 +96,3 @@ def buddy_bonus(username, password):
         open_button_xpath = '//*[@id="root"]/div/div/div[2]/div[4]/span'
         bonus_button = driver.find_element_by_xpath(open_button_xpath)
         bonus_button.click()
-

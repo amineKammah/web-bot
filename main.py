@@ -4,6 +4,7 @@ from utils import set_location_cookie, get_driver
 from proxy import fill_proxies_queue, get_proxy
 import logging
 import warnings
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
@@ -33,4 +34,3 @@ for _ in range(5):
     threading.Thread(target=create_accounts).start()
 
 fill_proxies_queue(1_000)
-
